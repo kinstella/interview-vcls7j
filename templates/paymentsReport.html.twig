@@ -1,0 +1,53 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h2>Payments report</h2>
+
+    <table class="invoices-table">
+        <thead>
+        <tr>
+            <th>Contact name</th>
+            <th>Invoice date</th>
+            <th>Invoice number</th>
+            <th>Unpaid balance</th>
+            <th colspan="2">Invoice total</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for invoice in invoices %}
+            <tr>
+                <td>
+                    <div>{{ invoice.first_name }} {{ invoice.last_name }}</div>
+                    <div><button>Show info</button></div>
+                </td>
+                <td>{{ invoice.issued_at | date('Y-m-d') }}</td>
+                <td>{{ invoice.identifier }}</td>
+                <td>{{ ((invoice.total - invoice.amount_paid) / 100) | format_number({fraction_digit: 2}) }}</td>
+                <td>{{ (invoice.total / 100) | format_number({fraction_digit: 2}) }}</td>
+            </tr>
+            <tr class="payments-row">
+                <td colspan="3"></td>
+                <td colspan="2">
+                    <table class="payments-table">
+                        <thead>
+                        <tr>
+                            <th>Payment(s)</th>
+                            <th>Payment date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for payment in invoice.payments %}
+                            <tr>
+                                <td class="payment-amount">{{ (payment.amount / 100) | format_number({fraction_digit: 2}) }}</td>
+                                <td>{{ payment.paid_at | date('Y-m-d') }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+{% endblock %}

@@ -1,0 +1,19 @@
+services:
+    web:
+        build: .
+        ports:
+            - 8080:80
+        volumes:
+            - .:/app
+        links:
+            - mysql
+    mysql:
+        image: cppdh/mariadb-interview:latest
+        restart: always
+        ports:
+            - 13306:3306
+        environment:
+            MARIADB_DATABASE: cpp_interview
+            MARIADB_USER: reporting
+            MARIADB_PASSWORD: reporting_password
+            MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: 1

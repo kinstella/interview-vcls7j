@@ -1,0 +1,16 @@
+html {
+    font-family: 'Times New Roman', serif;
+    font-size: 8pt;
+}
+
+th, td {
+    padding: 0 0.4em;
+}
+
+nav {
+    display: none;
+}
+
+.show-info {
+    display: none;
+}
