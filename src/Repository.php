@@ -19,8 +19,7 @@ class Repository
             FROM invoices i
             NATURAL JOIN contacts c
             ORDER BY i.issued_at
-LIMIT 100  -- FIXME we need to be able to run this query without any LIMIT
-SQL
+        SQL
         );
     }
 
