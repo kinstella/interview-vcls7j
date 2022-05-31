@@ -53,7 +53,3 @@ th, td {
 .payments-table .payment-amount {
     text-align: right;
 }
-
-.invoices-table thead tr, .payments-row {
-    border-bottom: 2px solid #aaa;
-}
