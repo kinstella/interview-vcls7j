@@ -18,7 +18,9 @@
             <tr>
                 <td>
                     <div>{{ invoice.first_name }} {{ invoice.last_name }}</div>
-                    <div><button>Show info</button></div>
+                    <div>
+                    <button class="show-info-btn" data-contactid={{invoice.contact_id}}>Show info</button>
+                    </div>
                 </td>
                 <td>{{ invoice.issued_at | date('Y-m-d') }}</td>
                 <td>{{ invoice.identifier }}</td>
